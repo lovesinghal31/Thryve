@@ -296,12 +296,12 @@ Thryve/
 ## 👥 Team
 
 ### Development Team
-- **Krish Mishra** - Research Analyst / Frontend Developer **(Team Lead)**
-- **Jayendra Vishwakarma** - Frontend Developer
-- **Ansh Zamde** - Frontend Developer
-- **Ashish Gupta** - UI / UX Designer
-- **Nimisha Agarwal** - Research Analyst / Backend Developer
-- **Love Singhal** - Backend Developer
+- **[Krish Mishra](https://github.com/Krish-Mishra)** - Research Analyst / Frontend Developer **(Team Lead)**
+- **[Jayendra Vishwakarma](https://github.com/Jay-877)** - Frontend Developer
+- **[Ansh Zamde](https://github.com/ansh1024)** - Frontend Developer
+- **[Ashish Gupta](https://github.com/ashish13gupta2006-cmd)** - UI / UX Designer
+- **[Nimisha Agarwal](https://github.com/nimisha1505)** - Research Analyst / Backend Developer
+- **[Love Singhal](https://github.com/lovesinghal31)** - Backend Developer
 
 ## 📞 Support
 
