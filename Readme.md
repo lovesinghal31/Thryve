@@ -94,6 +94,19 @@ For detailed API documentation, see `Backend/API_ENDPOINTS.md`.
 - Node.js (v16 or higher)
 - MongoDB (v5 or higher)
 - npm or yarn package manager
+- Git
+
+### 🔗 Clone the Repository
+
+1. Clone the repository:
+```bash
+git clone https://github.com/lovesinghal31/Thryve.git
+```
+
+2. Navigate to the project directory:
+```bash
+cd Thryve
+```
 
 ### Backend Setup
 
@@ -109,7 +122,7 @@ npm install
 
 3. Create environment file:
 ```bash
-cp .env.example .env
+touch .env.example .env
 ```
 
 4. Configure environment variables:
@@ -150,7 +163,7 @@ npm install
 
 3. Create environment file:
 ```bash
-cp .env.sample .env
+touch .env.sample .env
 ```
 
 4. Configure API base URL:
