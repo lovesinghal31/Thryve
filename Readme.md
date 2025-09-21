@@ -279,13 +279,16 @@ Thryve/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the ISC License.
 
 ## 👥 Team
 
-**Author:** Love Singhal
+### Development Team
+- **Krish Mishra** - Research Analyst / Frontend Developer **(Team Lead)**
+- **Jayendra Vishwakarma** - Frontend Developer
+- **Ansh Zamde** - Frontend Developer
+- **Ashish Gupta** - UI / UX Designer
+- **Nimisha Agarwal** - Research Analyst / Backend Developer
+- **Love Singhal** - Backend Developer
 
 ## 📞 Support
 
