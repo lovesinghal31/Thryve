@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Thryve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <a href="frontPage.html" class="logo">
+                <span class="logo-circle"></span>
+                <strong>Thryve</strong>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+            <a href="javascript:void(0);" class="btn-get-started">SIGN-IN &rarr;</a>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <h1>About Thryve</h1>
+                <p class="intro-text">
+                    We're revolutionizing mental health support by combining cutting-edge AI technology with the security and transparency of blockchain.
+                </p>
+
+                <div class="cards-container">
+                    <div class="info-card">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To democratize access to mental health support through ethical AI and blockchain technology, making quality therapeutic care available to everyone, everywhere, at any time.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>A world where mental health support is accessible, private, and personalized, powered by trusted AI agents and secured by blockchain technology.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3>Our Values</h3>
+                        <p>Privacy, Innovation, Empathy, and Trust form the cornerstone of our platform, ensuring the highest standards of care and security.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        
+    </div>
+
+    <div class="auth-modal-overlay" id="auth-modal">
+        <div class="auth-card">
+            <div id="login-form" class="auth-form">
+                <h2>Welcome Back</h2>
+                <form onsubmit="return false;">
+                    <div class="role-selector">
+                        <input type="radio" id="login-student" name="login-role" value="student" checked>
+                        <label for="login-student">Student</label>
+                        <input type="radio" id="login-admin" name="login-role" value="admin">
+                        <label for="login-admin">Admin</label>
+                        <div class="role-slider"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-email">✉️ Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">🔒 Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <p class="switch-form-text">
+                    Don't have an account? <a href="javascript:void(0);" id="show-signup">Sign Up</a>
+                </p>
+            </div>
+            <div id="signup-form" class="auth-form" style="display: none;">
+                <h2>Create Your Account</h2>
+                <form onsubmit="return false;">
+                    <div class="role-selector">
+                        <input type="radio" id="signup-student" name="signup-role" value="student" checked>
+                        <label for="signup-student">Student</label>
+                        <input type="radio" id="signup-admin" name="signup-role" value="admin">
+                        <label for="signup-admin">Admin</label>
+                        <div class="role-slider"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-fullname">👤 Full Name</label>
+                        <input type="text" id="signup-fullname" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-username">@ Username</label>
+                        <input type="text" id="signup-username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">✉️ Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">🔒 Password</label>
+                        <input type="password" id="signup-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <p class="switch-form-text">
+                    Already have an account? <a href="javascript:void(0);" id="show-login">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="about.js"></script>
+
+</body>
+
+</html>

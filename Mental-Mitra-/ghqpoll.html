@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thryve – GHQ Poll</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="frontPage.css" />
+  <style>
+    :root {
+      --card-bg: rgba(255, 255, 255, 0.18);
+      --glass-border: rgba(255, 255, 255, 0.35);
+      --text: #0f172a;
+      --muted: #6b7280;
+      --accent: #ff8c5a;
+      --accent-600: #ff7a42;
+      --ring: rgba(255, 140, 90, 0.35);
+      --border: rgba(255, 255, 255, 0.3);
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #fef3eb 0%, #f8fbff 40%, #f3f6ff 100%) fixed;
+      color: var(--text);
+    }
+
+    header.ghq-header {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+    }
+
+    header.ghq-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .ghq-container { max-width: 1100px; margin: 0 auto; padding: 12px 20px 48px; }
+
+    .ghq-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      border-radius: 22px;
+      box-shadow: 0 20px 70px rgba(255, 140, 90, 0.18);
+      padding: 26px 26px 12px;
+      border: 1px solid var(--glass-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ghq-card h1 { font-family: 'Playfair Display', serif; font-weight: 800; margin: 6px 0 4px; letter-spacing: 0.2px; }
+    .subtitle { color: var(--muted); margin-bottom: 16px; }
+
+    .progress { height: 10px; background: rgba(255,255,255,0.35); border-radius: 999px; overflow: hidden; margin: 10px 0 16px; border: 1px solid var(--glass-border); }
+    .progress > span { display: block; height: 100%; background: linear-gradient(90deg, #ffb490, #ff8c5a); width: 0%; transition: width 280ms ease; box-shadow: 0 0 24px rgba(255,140,90,0.5); }
+
+    form#ghq-form { margin-top: 10px; }
+    .question { padding: 8px 2px; }
+    .question.fade-in { animation: fadeIn 200ms ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .q-title { font-weight: 600; margin-bottom: 8px; line-height: 1.35; }
+
+    .options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media (min-width: 700px) { .options { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
+
+    .option { display: flex; align-items: center; gap: 10px; padding: 16px 16px; border: 1.5px solid var(--glass-border); border-radius: 14px; background: rgba(255,255,255,0.45); cursor: pointer; transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease, background 0.2s ease; }
+    .option:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); background: rgba(255,255,255,0.65); }
+    .option.selected { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); background: rgba(255,255,255,0.75); }
+    .option:active { transform: scale(0.995); }
+    .option input { accent-color: var(--accent); }
+
+    .actions { display: flex; gap: 12px; margin: 18px 0 6px; justify-content: space-between; align-items: center; }
+    .step-ctas { display: flex; gap: 10px; }
+    .btn { border: none; border-radius: 10px; padding: 12px 16px; cursor: pointer; font-weight: 600; }
+    .btn-primary { background: linear-gradient(90deg, #ff9f73, #ff7f4d); color: white; box-shadow: 0 8px 20px rgba(255, 140, 90, 0.35); }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-ghost { background: rgba(255,255,255,0.55); border: 1px solid var(--glass-border); }
+    .btn-disabled { opacity: 0.6; pointer-events: none; }
+
+    .results { margin-top: 12px; padding: 12px; border-radius: 12px; border: 1px solid var(--border); background: #fdfdfd; }
+    .severity { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid var(--border); background: #fff; }
+    .legend { background: #fff8f4; border: 1px dashed #ffd2bf; border-radius: 12px; padding: 10px 12px; margin: 8px 0 14px; color: #7a6a61; font-size: 14px; }
+    .note { color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+    /* Embed mode: hide header when in iframe */
+    body.embed header.ghq-header { display: none; }
+    body.embed .ghq-container { padding-top: 8px; }
+    body.embed { background: transparent; }
+  </style>
+</head>
+
+<body>
+  <header class="ghq-header">
+    <div class="logo"><span class="logo-circle"></span><strong>Thryve</strong></div>
+    <nav>
+      <ul style="display:flex; gap:16px; list-style:none; margin:0; padding:0;">
+        <li><a href="frontPage.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="ghq-container">
+    <section class="ghq-card">
+      <h1>General Health Questionnaire (GHQ-12)</h1>
+      <p class="subtitle">Please answer how you have been feeling recently.</p>
+
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      <form id="ghq-form"></form>
+
+      <div class="actions">
+        <div class="step-text" id="step-text">Question 1 of 12</div>
+        <div class="step-ctas">
+          <button class="btn btn-ghost" id="btn-prev" type="button">Back</button>
+          <button class="btn btn-primary" id="btn-next" type="button">Next</button>
+          <button class="btn btn-primary" id="btn-calc" type="button" style="display:none;">See Results</button>
+          <button class="btn btn-ghost" id="btn-reset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="results" id="results" style="display:none;">
+        <div id="score-line" style="font-weight:700; margin-bottom:6px;"></div>
+        <div id="severity-line" class="severity" style="margin-bottom:8px;"></div>
+        <div class="legend" style="margin-top:8px;">
+          Scoring (Likert): 0–3 per item. For negatively phrased items: Not at all = 0, No more than usual = 1, Rather more than usual = 2, Much more than usual = 3. For positively phrased items (ability/well-being), the scale is reversed: Better than usual = 0, Same as usual = 1, Less than usual = 2, Much less than usual = 3.
+        </div>
+        <div class="note">Screening tool only, not a diagnosis. If you’re in crisis, seek immediate help.</div>
+        <div style="margin-top:10px; display:flex; gap:8px;">
+          <button class="btn btn-primary" id="btn-submit" type="button">Submit Results</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Enter embed mode when opened inside an iframe or with ?embed=1
+    (function(){
+      try {
+        const params = new URLSearchParams(location.search);
+        if (window.self !== window.top || params.get('embed') === '1') {
+          document.body.classList.add('embed');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+
+    // GHQ-12 items. reverse: true => positively phrased (reverse-scored)
+    const questions = [
+      { id: 1, text: 'Been able to concentrate on whatever you’re doing?', reverse: true },
+      { id: 2, text: 'Lost much sleep over worry?', reverse: false },
+      { id: 3, text: 'Felt that you are playing a useful part in things?', reverse: true },
+      { id: 4, text: 'Felt capable of making decisions about things?', reverse: true },
+      { id: 5, text: 'Felt constantly under strain?', reverse: false },
+      { id: 6, text: 'Felt that you couldn’t overcome your difficulties?', reverse: false },
+      { id: 7, text: 'Been able to enjoy your normal day-to-day activities?', reverse: true },
+      { id: 8, text: 'Been able to face up to your problems?', reverse: true },
+      { id: 9, text: 'Been feeling unhappy and depressed?', reverse: false },
+      { id: 10, text: 'Been losing confidence in yourself?', reverse: false },
+      { id: 11, text: 'Been thinking of yourself as a worthless person?', reverse: false },
+      { id: 12, text: 'Been feeling reasonably happy, all things considered?', reverse: true }
+    ];
+
+    // Options per type
+    const negOptions = [
+      { label: 'Not at all', value: '0' },
+      { label: 'No more than usual', value: '1' },
+      { label: 'Rather more than usual', value: '2' },
+      { label: 'Much more than usual', value: '3' },
+    ];
+    const posOptions = [
+      { label: 'Better than usual', value: '0' },
+      { label: 'Same as usual', value: '1' },
+      { label: 'Less than usual', value: '2' },
+      { label: 'Much less than usual', value: '3' },
+    ];
+
+    const form = document.getElementById('ghq-form');
+    const resultsEl = document.getElementById('results');
+    const scoreLine = document.getElementById('score-line');
+    const severityLine = document.getElementById('severity-line');
+    const progressBar = document.getElementById('progress-bar');
+    const stepText = document.getElementById('step-text');
+  const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnCalc = document.getElementById('btn-calc');
+    const btnReset = document.getElementById('btn-reset');
+  const btnSubmit = document.getElementById('btn-submit');
+
+    let currentIndex = 0;
+    const selections = new Map(); // qId -> value
+
+    function renderQuestion(index) {
+      const q = questions[index];
+      form.innerHTML = '';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'question fade-in';
+      const qId = `q${q.id}`;
+
+      const title = document.createElement('div');
+      title.className = 'q-title';
+      title.innerText = `${q.id}. ${q.text}`;
+      wrapper.appendChild(title);
+
+      const options = document.createElement('div');
+      options.className = 'options';
+
+      const opts = q.reverse ? posOptions : negOptions;
+      opts.forEach(opt => {
+        const label = document.createElement('label');
+        label.className = 'option';
+        label.htmlFor = `${qId}-${opt.value}`;
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = qId;
+        input.id = `${qId}-${opt.value}`;
+        input.value = opt.value;
+        const saved = selections.get(qId);
+        if (saved === opt.value) {
+          input.checked = true;
+          label.classList.add('selected');
+        }
+
+  const span = document.createElement('span');
+  span.textContent = `${opt.label}`;
+
+        input.addEventListener('change', () => {
+          [...options.querySelectorAll('.option')].forEach(el => el.classList.remove('selected'));
+          label.classList.add('selected');
+        });
+
+        label.appendChild(input);
+        label.appendChild(span);
+        options.appendChild(label);
+      });
+
+      wrapper.appendChild(options);
+      form.appendChild(wrapper);
+
+      // Controls state
+      btnPrev.classList.toggle('btn-disabled', index === 0);
+      const last = index === questions.length - 1;
+      btnNext.style.display = last ? 'none' : 'inline-block';
+      btnCalc.style.display = last ? 'inline-block' : 'none';
+      stepText.textContent = `Question ${index + 1} of ${questions.length}`;
+      const pct = ((index + 1) / (questions.length)) * 100;
+      progressBar.style.width = `${pct}%`;
+    }
+
+    function interpretScore(total) {
+      // Likert 0-36; indicative bands
+      if (total <= 11) return { level: 'Low', color: '#10b981' };
+      if (total <= 15) return { level: 'Mild', color: '#22c55e' };
+      if (total <= 20) return { level: 'Moderate', color: '#f59e0b' };
+      return { level: 'High', color: '#ef4444' };
+    }
+
+    function saveCurrentSelection() {
+      const q = questions[currentIndex];
+      const qId = `q${q.id}`;
+      const selected = form.querySelector(`input[name="${qId}"]:checked`);
+      if (selected) selections.set(qId, selected.value);
+    }
+
+    function calculate() {
+      saveCurrentSelection();
+      let total = 0;
+      const unanswered = [];
+      questions.forEach(q => {
+        const val = selections.get(`q${q.id}`);
+        if (val === undefined) unanswered.push(q.id);
+        else total += Number(val);
+      });
+
+      if (unanswered.length) {
+        alert(`Please answer all required questions: ${unanswered.join(', ')}`);
+        return;
+      }
+
+      const { level, color } = interpretScore(total);
+      scoreLine.textContent = `Your GHQ-12 total: ${total} (0–36)`;
+      severityLine.textContent = `Distress level: ${level}`;
+      severityLine.style.borderColor = color;
+      severityLine.style.color = color;
+      resultsEl.style.display = 'block';
+      resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function submitResults() {
+      const answers = {};
+      let total = 0;
+      questions.forEach(q => {
+        const qId = `q${q.id}`;
+        const val = selections.get(qId);
+        const num = val !== undefined ? Number(val) : null;
+        answers[qId] = num;
+        if (num !== null) total += num;
+      });
+      const { level } = interpretScore(total);
+      const payload = { total, severity: level, answers };
+      console.log('GHQ-12 Submit:', payload);
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ source: 'thryve', type: 'poll-submit', poll: 'GHQ-12', payload }, '*');
+        }
+      } catch (e) { /* ignore cross-origin */ }
+    }
+
+    function resetForm() {
+      selections.clear();
+      currentIndex = 0;
+      resultsEl.style.display = 'none';
+      renderQuestion(currentIndex);
+    }
+
+    btnPrev.addEventListener('click', () => {
+      saveCurrentSelection();
+      if (currentIndex > 0) currentIndex--;
+      renderQuestion(currentIndex);
+    });
+
+    btnNext.addEventListener('click', () => {
+      saveCurrentSelection();
+      const q = questions[currentIndex];
+      if (selections.get(`q${q.id}`) === undefined) {
+        alert('Please select an option to continue.');
+        return;
+      }
+      if (currentIndex < questions.length - 1) currentIndex++;
+      renderQuestion(currentIndex);
+    });
+
+  btnCalc.addEventListener('click', calculate);
+  if (btnSubmit) btnSubmit.addEventListener('click', submitResults);
+    btnReset.addEventListener('click', resetForm);
+
+    // initial
+    renderQuestion(currentIndex);
+  </script>
+</body>
+
+</html>

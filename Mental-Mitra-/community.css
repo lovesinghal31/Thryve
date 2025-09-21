@@ -1,0 +1,131 @@
+:root {
+    --background-color: #fdfaf6;
+    --text-color: #2c251d;
+    --serif-font: 'Playfair Display', serif;
+    --sans-serif-font: 'Poppins', sans-serif;
+    --accent-orange: #f5a67c;
+    --accent-yellow: #ffc700;
+    --border-color: #e5e7eb;
+}
+
+body {
+    font-family: var(--sans-serif-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.font-serif {
+    font-family: var(--serif-font);
+}
+
+.main-content>div:not(.hidden) {
+    display: block;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.popover {
+    display: none;
+    position: absolute;
+    z-index: 10;
+}
+
+.popover.show {
+    display: block;
+}
+
+.btn-accent {
+    background-color: var(--accent-orange);
+    color: white;
+}
+
+.btn-accent:hover {
+    opacity: 0.9;
+}
+
+.btn-dark {
+    background-color: var(--text-color);
+    color: white;
+}
+
+.btn-dark:hover {
+    opacity: 0.9;
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    width: 100%;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--light-grey);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li a {
+    font-family: var(--serif-font);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+.btn-get-started {
+    border: 1.5px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}

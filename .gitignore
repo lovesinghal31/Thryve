@@ -1,0 +1,135 @@
+# ===============================================
+# Combined .gitignore for Thryve Mental Health Platform
+# ===============================================
+
+# ==================== LOGS ====================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# =============== DEPENDENCIES ==================
+node_modules/
+jspm_packages/
+bower_components/
+
+# ================= BUILD OUTPUT ================
+dist/
+dist-ssr/
+build/
+build/Release
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# ==================== CACHE ====================
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.cache/
+.parcel-cache/
+.fusebox/
+web_modules/
+
+# ================= TYPESCRIPT ==================
+*.tsbuildinfo
+
+# ================== RUNTIME ====================
+pids
+*.pid
+*.seed
+*.pid.lock
+.node_repl_history
+
+# =============== ENVIRONMENT FILES ==============
+.env
+.env.local
+.env.test
+.env.production
+*.local
+
+# =============== COVERAGE & TESTING =============
+coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ================ YARN SPECIFIC =================
+.yarn-integrity
+*.tgz
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ============== EDITOR & IDE FILES ==============
+.vscode/*
+!.vscode/extensions.json
+.vscode-test/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ================= OS SPECIFIC ==================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============== SERVERLESS & CLOUD ==============
+.serverless/
+.dynamodb/
+
+# =================== PROJECT SPECIFIC ===================
+
+# Backend specific files
+api_endpoints.md
+chat.md
+seed/
+GitCommand.md
+.lock-wscript
+.tern-port
+
+# Admin site specific
+.vite/
+
+# Mental Mitra specific (HTML/CSS/JS project)
+# Add any specific patterns for the frontend if needed
+
+# ================== TEMPORARY FILES =================
+*.tmp
+*.temp
+.grunt/
+
+# =================== OPTIONAL ====================
+# Uncomment below if using specific tools
+
+# ESLint
+# .eslintcache
+
+# Microbundle cache
+# .rpt2_cache/
+
+# Optional REPL history
+# .node_repl_history
+
+# Stores VSCode versions used for testing VSCode extensions
+# .vscode-test
+
+# ================= END OF FILE ==================

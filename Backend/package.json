@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend of sih 2025 solution",
+  "keywords": [
+    "backend",
+    "sih",
+    "2025"
+  ],
+  "license": "ISC",
+  "author": "Love Singhal",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
+    "start": "node -r dotenv/config --experimental-json-modules src/index.js",
+    "seed": "node -r dotenv/config --experimental-json-modules src/seed/seed.js",
+    "seed:clear": "node -r dotenv/config --experimental-json-modules src/seed/clear.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1",
+    "mongoose-aggregate-paginate-v2": "^1.1.4",
+    "nodemailer": "^7.0.6",
+    "@faker-js/faker": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  }
+}

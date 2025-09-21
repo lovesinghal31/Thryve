@@ -1,0 +1,118 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdfaf6;
+    color: #2c251d;
+}
+
+#appName,
+#headerLogoText,
+#chatHeaderTitle {
+    font-family: 'Playfair Display', serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #fdfaf6;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #dcd6ce;
+    border-radius: 4px;
+    border: 2px solid #fdfaf6;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #dcd6ce #fdfaf6;
+}
+
+.user-message {
+    background-color: #f5a67c;
+    /* accent-orange */
+    color: #2c251d;
+}
+
+.bot-message {
+    background-color: #ffffff;
+    color: #2c251d;
+    border: 1px solid #f3f4f6;
+    /* border-gray-100 */
+}
+
+.chat-history-item {
+    border-bottom: 1px solid #e5e7eb;
+    /* bg-gray-200 */
+}
+
+.chat-history-item:last-child {
+    border-bottom: none;
+}
+
+#attachmentOptions {
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+    /* --- Header & Navigation --- */
+header {
+    display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1rem;
+            width: 100%;
+            background-color: var(--background-color);
+            border-bottom: 1px solid var(--light-grey);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li a {
+    font-family: var(--serif-font);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+.btn-get-started {
+    border: 1.5px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}

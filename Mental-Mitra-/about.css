@@ -1,0 +1,373 @@
+/* --- Global Styles & Variables (from your code) --- */
+:root {
+    --background-color: #fdfaf6;
+    --text-color: #2c251d;
+    --serif-font: 'Playfair Display', serif;
+    --sans-serif-font: 'Poppins', sans-serif;
+    --accent-orange: #f5a67c;
+    --accent-yellow: #ffc700;
+    --light-grey: #f0edea;
+    --dark-grey: #666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--sans-serif-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header & Navigation (from your code) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-grey);
+    /* Added a subtle separator */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li a {
+    font-family: var(--serif-font);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+.btn-get-started {
+    border: 1.5px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+/* --- New "About" Section Styles --- */
+.about-section {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-family: var(--sans-serif-font);
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.about-section .intro-text {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    font-size: 1.2rem;
+    color: var(--dark-grey);
+    line-height: 1.7;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background-color: #ffffff;
+    /* White background for cards */
+    border: 1px solid var(--light-grey);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.info-card .icon {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    /* Using text-color for a sophisticated look */
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    font-size: 1rem;
+    color: var(--dark-grey);
+    line-height: 1.6;
+}
+
+/* --- Footer Styles (from your code) --- */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--light-grey);
+    color: var(--dark-grey);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .container {
+        padding: 1rem 2rem;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    header nav {
+        display: none;
+        /* Hiding nav for simplicity on mobile, as in your original code */
+    }
+
+    .about-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-section .intro-text {
+        font-size: 1rem;
+    }
+}
+
+/* =========== AUTHENTICATION MODAL STYLES (from your code) =========== */
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 37, 29, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.auth-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.auth-card {
+    background: var(--background-color);
+    border-radius: 12px;
+    border: 1px solid var(--light-grey);
+    box-shadow: 0 8px 32px 0 rgba(44, 37, 29, 0.2);
+    padding: 40px 35px;
+    width: 100%;
+    max-width: 420px;
+    color: var(--text-color);
+    font-family: var(--sans-serif-font);
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.auth-modal-overlay.active .auth-card {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.role-selector {
+    position: relative;
+    display: flex;
+    background-color: var(--light-grey);
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.role-selector input[type="radio"] {
+    display: none;
+}
+
+.role-selector label {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    color: var(--dark-grey);
+    z-index: 1;
+}
+
+.role-selector input[type="radio"]:checked+label {
+    color: var(--background-color);
+}
+
+.role-slider {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    background-color: var(--text-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.role-selector input[type="radio"][value="admin"]:checked~.role-slider {
+    left: 50%;
+}
+
+.auth-form {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.auth-form.exiting {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--light-grey);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #999;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-orange);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#login-form .auth-btn {
+    background-color: var(--accent-orange);
+    color: white;
+}
+
+#signup-form .auth-btn {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.switch-form-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.switch-form-text a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent-orange);
+}
+
+.switch-form-text a:hover {
+    text-decoration: underline;
+}

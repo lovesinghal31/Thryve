@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify OTP - Thryve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="frontPage.css" />
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .verify-card { background: var(--background-color); border: 1px solid var(--light-grey); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(44,37,29,0.2); width: 100%; max-width: 420px; padding: 36px; }
+    .verify-card h1 { font-family: var(--serif-font); font-size: 1.75rem; margin-bottom: 12px; }
+    .verify-sub { color: var(--dark-grey); font-size: 0.95rem; margin-bottom: 18px; }
+    .input-group { margin-bottom: 18px; }
+    .input-group input { width: 100%; padding: 12px 15px; background: var(--light-grey); border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; color: var(--text-color); transition: border-color 0.3s ease; }
+    .input-group label { display:flex; align-items:center; font-size:0.9rem; margin-bottom:8px; font-weight:500; color: var(--dark-grey); }
+    .input-group input:focus { outline:none; border-color: var(--accent-orange); }
+    .auth-btn { width: 100%; padding: 14px; border: none; border-radius: 8px; font-size: 1.05rem; font-weight: 600; cursor: pointer; background: var(--accent-orange); color: white; transition: transform 0.2s ease, box-shadow 0.3s ease; }
+    .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+    .email-pill { display:inline-block; background: var(--light-grey); border:1px solid #ddd; padding:4px 8px; border-radius: 999px; font-size: 0.85rem; }
+    .resend { margin-top: 10px; font-size: 0.9rem; color: var(--dark-grey); }
+    .resend a { color: var(--accent-orange); font-weight: 600; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="verify-card">
+    <h1>Verify your email</h1>
+    <p class="verify-sub">We sent a 6-digit code to <span id="email-pill" class="email-pill"></span>. Enter it below to verify your account.</p>
+    <form id="otp-form">
+      <div class="input-group">
+        <label for="otp">🔒 OTP</label>
+        <input type="text" id="otp" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" placeholder="Enter 6-digit OTP" required />
+      </div>
+      <button type="submit" class="auth-btn">Verify</button>
+    </form>
+    <p class="resend">Didn't receive the code? <a href="#" id="resend-link">Resend</a></p>
+  </div>
+  <script>
+    (function(){
+      const API_BASE = 'http://localhost:8000/api/v1';
+      const params = new URLSearchParams(window.location.search);
+      const emailFromQuery = params.get('email');
+      const email = emailFromQuery || sessionStorage.getItem('verify_email') || '';
+      document.getElementById('email-pill').textContent = email || 'your email';
+
+      const otpForm = document.getElementById('otp-form');
+      otpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const otp = document.getElementById('otp').value.trim();
+        if (!email || !otp) { alert('Missing email or OTP.'); return; }
+        const btn = otpForm.querySelector('.auth-btn');
+        btn.disabled = true; btn.textContent = 'Verifying...';
+        try {
+          const res = await fetch(`${API_BASE}/users/verify-otp`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, otp })
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || data.success === false) {
+            alert(data?.message || `Verification failed (HTTP ${res.status}).`);
+          } else {
+            // Success -> go to login form on front page
+            const next = new URL('frontPage.html', window.location.origin);
+            next.searchParams.set('auth', 'login');
+            if (email) next.searchParams.set('email', email);
+            window.location.href = next.toString();
+          }
+        } catch (err) {
+          console.error('Verify OTP error:', err);
+          alert('Something went wrong while verifying. Please try again.');
+        } finally {
+          btn.disabled = false; btn.textContent = 'Verify';
+        }
+      });
+
+      // Optional resend using same register endpoint with stored details, here just a stub
+      document.getElementById('resend-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Please check your email again. If not found, look in spam folder.');
+      });
+    })();
+  </script>
+</body>
+</html>

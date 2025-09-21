@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Thryve</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body class="antialiased">
+    <div id="mainContainer" class="flex h-screen overflow-hidden">
+
+        <aside id="sidebar" class="flex flex-col p-4 bg-white border-r border-gray-200 transition-all duration-300 ease-in-out w-80">
+            <div class="flex items-center justify-between mb-6">
+                <h1 id="appName" class="text-2xl font-bold text-[#2c251d]">Your Thryve</h1>
+                <button id="sidebarToggleBtn" class="p-2 text-gray-500 hover:text-gray-900 focus:outline-none" title="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <button id="newChatBtn" class="flex items-center justify-center w-full px-4 py-3 mb-4 text-sm font-semibold text-[#2c251d] bg-[#f5a67c] rounded-xl hover:bg-[#f39562] focus:outline-none focus:ring-2 focus:ring-[#ffc700] focus:ring-opacity-50">
+                <svg class="w-5 h-5 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                <span id="newChatBtnText">New Chat</span>
+            </button>
+
+            <!-- Wellness Checks: PHQ-9 and GHQ-12 -->
+            <div class="mb-4">
+                <p class="text-xs font-semibold text-gray-500 uppercase mb-2">Wellness Checks</p>
+                <div class="space-y-2">
+                    <button id="openPhqBtn" class="w-full flex items-center px-4 py-2 text-sm rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors" title="Take PHQ-9">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2c251d] mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 00-.894.553L7.382 4H4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2h-3.382l-.724-1.447A1 1 0 0011 2H9z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM7 11a1 1 0 011 1v2H6v-2a1 1 0 011-1zm6 0a1 1 0 011 1v2h-2v-2a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                        Take PHQ-9
+                    </button>
+                    <button id="openGhqBtn" class="w-full flex items-center px-4 py-2 text-sm rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors" title="Take GHQ-12">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2c251d] mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M8 2a1 1 0 00-1 1v2H5a2 2 0 00-2 2v2h14V7a2 2 0 00-2-2h-2V3a1 1 0 00-1-1H8z"/><path d="M18 11H2v4a2 2 0 002 2h12a2 2 0 002-2v-4z"/></svg>
+                        Take GHQ-12
+                    </button>
+                </div>
+            </div>
+            
+            <div id="sidebarPen" class="hidden">
+                <button class="flex items-center w-full justify-center py-2 text-[#2c251d] bg-[#f5a67c] rounded-lg hover:bg-[#f39562]" id="penInSidebar" title="New chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+                        <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="recentChatsBlock" class="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                <p id="recentChatsTitle" class="text-xs font-semibold text-gray-500 uppercase mb-2">Recent Chats</p>
+                <ul id="chatHistoryList"></ul>
+            </div>
+            
+            <div class="mt-auto border-t border-gray-200 pt-4">
+                <button id="gameModeBtn" class="flex items-center w-full px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors" title="Play with Thryve">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span id="gameModeText" class="ml-3 transition-opacity duration-200">Play with Thryve</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col relative">
+
+            <header>
+            <a href="frontPage.html" class="logo">
+                <span class="logo-circle"></span>
+                <strong>Thryve</strong>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    <li><a href="community.html">COMMUNITY</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+            <!-- Auth-aware header actions -->
+            <div class="flex items-center gap-3">
+                <a id="header-signin-btn" href="frontPage.html?auth=login" class="border border-gray-300 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-full transition-colors">Sign In</a>
+                <a id="header-profile-link" href="profile.html" class="hidden items-center gap-2 border border-gray-300 hover:bg-gray-100 text-gray-800 font-semibold py-1.5 px-3 rounded-full transition-colors">
+                    <img id="header-profile-avatar" src="https://placehold.co/28x28/2c251d/fdfaf6?text=ME" alt="User" class="w-7 h-7 rounded-full">
+                    <span id="header-profile-name" class="text-sm">Profile</span>
+                </a>
+            </div>
+        </header>
+            
+            <div id="chatHeader" class="p-4 bg-white border-b border-gray-200 hidden">
+                <h1 id="chatHeaderTitle" class="text-xl font-bold text-gray-900">Your Thryve</h1>
+            </div>
+
+            <div id="messageContainer" class="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto custom-scrollbar flex flex-col items-center">
+                <div id="welcomeMessage" class="flex items-center justify-center h-full text-center text-gray-500 flex-col max-w-2xl transition-all duration-500 ease-in-out">
+                    <svg class="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <h2 class="text-2xl font-bold mb-2">How can I help you today?</h2>
+                    <p class="max-w-md">Ask me anything from brainstorming ideas to writing code or generating content.</p>
+                </div>
+            </div>
+            
+            <div class="p-4 mx-4 mb-4 rounded-xl bg-white shadow-lg shadow-[#2c251d]/10">
+                <form id="chatForm" class="flex items-center gap-x-2">
+                    <div id="attachmentContainer" class="relative">
+                        <button type="button" id="addAttachmentBtn" class="p-2 text-gray-500 hover:text-gray-900 rounded-full hover:bg-gray-200 transition-colors" title="Add attachment">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div id="attachmentOptions" class="hidden absolute bottom-full mb-2 left-0 w-48 bg-white border border-gray-200 rounded-lg shadow-xl p-2 z-10">
+                            <button type="button" class="w-full flex items-center gap-x-3 px-3 py-2 text-sm text-left rounded-md hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.938V15a1 1 0 01-2 0v-.062a4.5 4.5 0 01-4-4.438V6.5a1 1 0 012 0v4a2.5 2.5 0 004.858 1.144A.75.75 0 0113.5 12a.75.75 0 01.144.858A4.5 4.5 0 0111 14.938z" clip-rule="evenodd" /></svg>
+                                Audio
+                            </button>
+                            <button type="button" class="w-full flex items-center gap-x-3 px-3 py-2 text-sm text-left rounded-md hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 5.553A1 1 0 0116 6.447V13.553a1 1 0 01-1.447.894l-3-3.75a1 1 0 010-1.788l3-3.75z" /></svg>
+                                Video
+                            </button>
+                            <button type="button" class="w-full flex items-center gap-x-3 px-3 py-2 text-sm text-left rounded-md hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 013.25 3h13.5A2.25 2.25 0 0119 5.25v9.5A2.25 2.25 0 0116.75 17H3.25A2.25 2.25 0 011 14.75v-9.5zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 00.75-.75v-3.69l-2.76-2.76a.75.75 0 00-1.06 0l-2.122 2.122a.75.75 0 01-1.06 0L9.47 8.28a.75.75 0 00-1.06 0L6.22 10.47a.75.75 0 01-1.06 0l-2.76-2.76a.75.75 0 00-1.06 0l.22.22zM16.75 5H3.25a.75.75 0 00-.75.75v.04l2.76 2.76a.75.75 0 001.06 0L9.47 5.78a.75.75 0 011.06 0l2.122 2.121a.75.75 0 001.06 0l2.76-2.76a.75.75 0 00-1.06 0l-1.646 1.647a.75.75 0 01-1.06 0L8 5.06v.04a.75.75 0 00.75.75h.04l1.646 1.647a.75.75 0 001.06 0L14.646 5h.04a.75.75 0 00.75-.75v-.04z" clip-rule="evenodd" /></svg>
+                                Photos
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative flex-1">
+                        <input type="text" id="chatInput" placeholder="Message Your Thryve ✨" class="w-full pl-6 pr-16 py-4 bg-[#fdfaf6] rounded-full placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#ffc700] focus:ring-opacity-50">
+                        <button type="submit" id="sendBtn" class="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-[#f5a67c] hover:bg-[#f39562] text-[#2c251d] transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Poll Modal -->
+    <div id="pollModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+        <div class="bg-white rounded-xl w-full max-w-3xl h-[80vh] flex flex-col shadow-2xl">
+            <div class="flex items-center justify-between p-3 border-b">
+                <h3 id="pollTitle" class="font-semibold text-gray-800">Assessment</h3>
+                <button id="pollCloseBtn" class="p-2 rounded-full hover:bg-gray-100" title="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </button>
+            </div>
+            <iframe id="pollIframe" class="flex-1 w-full" src="" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>

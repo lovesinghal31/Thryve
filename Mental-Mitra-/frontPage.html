@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thryve - Your Mental Health Matter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="frontPage.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-circle"></span>
+                <strong>Thryve</strong>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="display:flex;align-items:center;gap:12px;">
+                <a id="header-signin-btn" href="javascript:void(0);" class="btn-get-started">SIGN-IN &rarr;</a>
+                <a id="header-profile-link" href="profile.html" style="display:none;align-items:center;gap:8px;text-decoration:none;color:inherit;border:1px solid #e5e7eb;border-radius:999px;padding:6px 10px;">
+                    <img id="header-profile-avatar" src="https://placehold.co/28x28/2c251d/fdfaf6?text=ME" alt="ME" style="width:28px;height:28px;border-radius:999px;">
+                    <span id="header-profile-name" style="display:none;">Profile</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="hero-section">
+            <div class="left-column">
+                <div class="circular-text-container">
+                    <svg viewBox="0 0 100 100" width="120" height="120">
+                        <defs>
+                            <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                        </defs>
+                        <text font-size="9" font-family="Poppins, sans-serif" letter-spacing="1.5">
+                            <textPath xlink:href="#circle">
+                                WITH A MENTAL HEALTH CONSULTANT •
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div class="promo-text">
+                    <h2>You don't have to struggle in silence!</h2>
+                    <a href="https://share.google/HvF2V0R1VIw1ft8c1" class="learn-more">LEARN MORE</a>
+                </div>
+                <div class="audio-player-mockup">
+                    <div class="play-button">&#9658;</div>
+                    <div class="sound-bars">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <audio id="background-audio" src="music.mp3"></audio>
+                </div>
+            </div>
+
+            <div class="center-column">
+                <h1>
+                    Your Mental <br>
+                    <span class="serif-font">Health</span>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="plus-star">
+                        <path d="M12 0L13.65 10.35L24 12L13.65 13.65L12 24L10.35 13.65L0 12L10.35 10.35L12 0Z"
+                            fill="#ffc700" />
+                    </svg>
+                    Matter
+                </h1>
+                <div class="illustration-container">
+                    <img src="illustration2.png"
+                        style="mix-blend-mode: multiply;"
+                        alt="A person meditating inside a silhouette of a head filled with a celestial theme"
+                        class="main-illustration">
+                    <div class="inner-circular-text">
+                        <svg viewBox="0 0 100 100" width="130" height="130">
+                            <defs>
+                                <path id="inner-circle" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+                            </defs>
+                            <text font-size="9" fill="white" font-family="Poppins, sans-serif" letter-spacing="2">
+                                <textPath xlink:href="#inner-circle">
+                                    WE GET YOU • WE GOT YOU •
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+                <a href="#" class="btn-begin-journey">Begin Your Journey &rarr;</a>
+            </div>
+
+            <div class="right-column">
+                <div class="info-box hope-box">
+                    <img src="brain-icon2.png" style="mix-blend-mode: multiply;" alt="Half light, half dark brain icon" class="brain-icon">
+                    <p>There's <strong>hope</strong> when your brain tell's you there isn't</p>
+                </div>
+                <div class="info-box definition-box">
+                    <h3>Grief <span class="pronunciation">/ɡriːf/</span></h3>
+                    <p>Each day we learn of the griefs and tribulations which affect our constituents or ourselves.</p>
+                </div>
+            </div>
+        </main>
+
+        <section class="how-raft-helps-you">
+            <h2 class="section-title">How Thryve Helps You</h2>
+            <p class="section-subtitle">Experience a new kind of emotional support, powered by empathetic guidance</p>
+
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-message-square">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p>Always here to listen and support you, any time of day</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-lightbulb">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h4>Smart Insights</h4>
+                    <p>Personalized guidance powered by emotional intelligence</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-lock">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h4>Private & Secure</h4>
+                    <p>Your conversations are always confidential and encrypted</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-award">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.89"></polyline>
+                        </svg>
+                    </div>
+                    <h4>Evidence-Based</h4>
+                    <p>Therapeutic techniques backed by clinical research</p>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+    <div class="auth-modal-overlay" id="auth-modal">
+        <div class="auth-card">
+
+            <div id="login-form" class="auth-form">
+                <h2>Welcome Back</h2>
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="login-email">✉️ Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">🔒 Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <p class="switch-form-text">
+                    Don't have an account? <a href="javascript:void(0);" id="show-signup">Sign Up</a>
+                </p>
+            </div>
+
+            <div id="signup-form" class="auth-form" style="display: none;">
+                <h2>Create Your Account</h2>
+                <form onsubmit="return false;">
+                    <!-- <div class="role-selector">
+                        <input type="radio" id="signup-student" name="signup-role" value="student" checked>
+                        <label for="signup-student">Student</label>
+                        <input type="radio" id="signup-admin" name="signup-role" value="admin">
+                        <label for="signup-admin">Admin</label>
+                        <div class="role-slider"></div>
+                    </div> -->
+                    <!-- <div class="input-group">
+                        <label for="signup-username">👤 Username</label>
+                        <input type="text" id="signup-username" placeholder="Enter your username" required>
+                    </div> -->
+                    <div class="input-group">
+                        <label for="signup-username">@ Username</label>
+                        <input type="text" id="signup-username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-institute">🏫 Institute</label>
+                        <select id="signup-institute" name="signup-institute" required>
+                            <option value="">Select your institute</option>
+                            <option value="68cd6ab80e70d922affde04f">IET-DAVV</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">✉️ Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">🔒 Password</label>
+                        <input type="password" id="signup-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <p class="switch-form-text">
+                    Already have an account? <a href="javascript:void(0);" id="show-login">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="frontPage.js"></script>
+
+</body>
+
+</html>

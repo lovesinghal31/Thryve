@@ -1,0 +1,192 @@
+    :root {
+        --background: #fdfaf6;
+        --text-color: #2c251d;
+        --text-secondary: #7a736d;
+        --primary: #f5a67c;
+        --primary-hover: #e89361;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --font-serif: 'Playfair Display', serif;
+        --font-sans: 'Poppins', sans-serif;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--background);
+        color: var(--text-color);
+    }
+
+    .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 1.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px -5px rgba(245, 166, 124, 0.3);
+    }
+
+    .accordion-item {
+        background-color: #f9fafb;
+        border: 1px solid var(--border-color);
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: var(--primary);
+        color: var(--text-color);
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-hover);
+    }
+
+    .chevron-rotate {
+        transform: rotate(90deg);
+    }
+
+    .toggle-label {
+        background-color: #d1d5db;
+    }
+
+    .toggle-checkbox:checked {
+        right: 0;
+        border-color: var(--primary);
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+        background-color: var(--primary);
+    }
+
+    input,
+    textarea {
+        background-color: #f3f4f6;
+        color: var(--text-color);
+        border-color: #d1d5db;
+    }
+
+    .modal-content {
+        background-color: var(--background);
+    }
+
+    #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.5rem;
+    }
+
+    .calendar-day {
+        text-align: center;
+        padding: 0.5rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.2s;
+    }
+
+    .calendar-day.has-entry::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: var(--primary);
+        border-radius: 50%;
+    }
+
+    .calendar-day:not(.empty):hover {
+        background-color: #f3f4f6;
+    }
+
+    .calendar-day.selected {
+        background-color: var(--primary);
+        color: white;
+    }
+
+    .calendar-header {
+        text-align: center;
+        color: var(--text-secondary);
+    }
+
+    .font-serif {
+        font-family: var(--font-serif);
+    }
+
+        /* --- Header & Navigation --- */
+header {
+    display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1rem;
+            width: 100%;
+            background-color: var(--background-color);
+            border-bottom: 1px solid var(--light-grey);
+            /* position: sticky; */
+            top: 0;
+            z-index: 50;
+            background-color: solid #fdfaf6;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li a {
+    font-family: var(--serif-font);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+.btn-get-started {
+    border: 1.5px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}

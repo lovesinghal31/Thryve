@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thryve - My Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body class="antialiased">
+
+    <header>
+            <a href="frontPage.html" class="logo">
+                <span class="logo-circle"></span>
+                <strong>Thryve</strong>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    <li><a href="community.html">COMMUNITY</a></li>
+                    <li><a href="chatbot.html">CHATBOT</a></li>
+                    <li><a href="dashBoard.html">DASHBOARD</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center">
+                    <button class="flex items-center space-x-2 border border-gray-300 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-full transition-colors">
+                        <span>Profile</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+        </header>
+
+    <!-- Header Navigation -->
+
+    <div class="p-4 sm:p-6 lg:p-8">
+        <main class="w-full max-w-4xl mx-auto">
+            <div class="profile-card p-6 sm:p-8">
+                <!-- Profile Header -->
+                <header class="flex items-center justify-between pb-6 border-b border-gray-200">
+                    <div class="flex items-center space-x-4">
+                        <img id="profile-avatar" class="w-20 h-20 rounded-full object-cover border-4 border-orange-200" src="https://placehold.co/128x128/f5a67c/2c251d?text=MA" alt="User Avatar">
+                        <div>
+                            <h1 id="profile-display-name" class="text-2xl sm:text-3xl font-bold text-gray-900">MindfulAlex</h1>
+                            <p id="profile-status-text" class="text-gray-500 text-sm sm:text-base">"Embracing the journey."</p>
+                             <div class="flex items-center space-x-2 mt-2">
+                                <span class="flex h-3 w-3 relative">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                </span>
+                                <span id="online-status-label" class="text-sm text-green-600 font-semibold">Online</span>
+                                <span id="online-timer" class="text-sm text-gray-500">for 0m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-500"></i>
+                    </button>
+                </header>
+
+                <!-- Today's Thought Section -->
+                <section class="py-6 border-b border-gray-200 text-center">
+                    <h3 class="text-sm font-medium text-gray-500 mb-2 tracking-wider">TODAY'S THOUGHT</h3>
+                    <p id="thought-text" class="text-lg italic text-gray-700">"The journey of a thousand miles begins with a single step."</p>
+                </section>
+
+                <!-- Key Features Section -->
+                <section class="py-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-5">Your Wellness Toolkit</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                        <div data-modal="journalModal" class="feature-card p-4 rounded-xl flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                            <i data-lucide="book-heart" class="w-10 h-10" style="color: var(--primary);"></i>
+                            <span class="font-medium text-sm text-gray-700">Daily Journal</span>
+                        </div>
+                        <div data-modal="moodModal" class="feature-card p-4 rounded-xl flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                            <i data-lucide="smile" class="w-10 h-10" style="color: var(--primary);"></i>
+                            <span class="font-medium text-sm text-gray-700">Mood Tracker</span>
+                        </div>
+                        <div data-modal="goalsModal" class="feature-card p-4 rounded-xl flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                            <i data-lucide="target" class="w-10 h-10" style="color: var(--primary);"></i>
+                            <span class="font-medium text-sm text-gray-700">My Goals</span>
+                        </div>
+                        <a href="chatbot.html">
+                        <div class="feature-card p-4 rounded-xl flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                                <i data-lucide="user-check" class="w-10 h-10" style="color: var(--primary);"></i>
+                                <span class="font-medium text-sm text-gray-700">My Therapist</span>
+                            </div>
+                        </a>
+                        <div data-modal="myPlaceModal" class="feature-card p-4 rounded-xl flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                            <i data-lucide="image" class="w-10 h-10" style="color: var(--primary);"></i>
+                            <span class="font-medium text-sm text-gray-700">My Place</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="pt-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Settings & Preferences</h2>
+                    <div class="space-y-2">
+                        <!-- Profile Settings Accordion -->
+                        <div class="accordion-item rounded-lg">
+                             <button class="accordion-header w-full flex items-center justify-between p-4 text-left">
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="user" class="w-5 h-5 text-gray-500"></i>
+                                    <span class="text-gray-700 font-medium">Profile</span>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="space-y-4 p-4 border-t border-gray-200">
+                                    <div><label class="text-sm font-medium text-gray-600">Year</label><input id="profile-year-input" type="number" value="2025" class="mt-1 w-full p-2 border rounded-md"></div>
+                                    <div><label class="text-sm font-medium text-gray-600">Username</label><input id="profile-username-input" type="text" value="MindfulAlex" class="mt-1 w-full p-2 border rounded-md"></div>
+                                    <div><label class="text-sm font-medium text-gray-600">Status</label><textarea id="status-input" class="mt-1 w-full p-2 border rounded-md" rows="2">"Embracing the journey."</textarea></div>
+                                    <div><label class="text-sm font-medium text-gray-600">Today's Thought</label><textarea id="thought-input" class="mt-1 w-full p-2 border rounded-md" rows="2">The journey of a thousand miles begins with a single step.</textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Notification Preferences Accordion -->
+                         <div class="accordion-item rounded-lg">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left">
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="sliders-horizontal" class="w-5 h-5 text-gray-500"></i><span class="font-medium text-gray-700">Notification Preferences</span>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content"><div class="space-y-3 p-4 border-t border-gray-200"><div class="flex items-center justify-between"><span class="text-gray-700">Daily Reminders</span><div class="relative inline-block w-10 mr-2 align-middle select-none"><input type="checkbox" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/><label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label></div></div><div class="flex items-center justify-between"><span class="text-gray-700">Weekly Summary</span><div class="relative inline-block w-10 mr-2 align-middle select-none"><input type="checkbox" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/><label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label></div></div></div></div>
+                        </div>
+                         <!-- Privacy & Security Accordion -->
+                         <div class="accordion-item rounded-lg">
+                            <button class="accordion-header w-full flex items-center justify-between p-4 text-left">
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="shield" class="w-5 h-5 text-gray-500"></i><span class="font-medium text-gray-700">Privacy & Security</span>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content"><div class="space-y-3 p-4 border-t border-gray-200"><div class="flex items-center justify-between"><span class="text-gray-700">Make your avatar visible</span><div class="relative inline-block w-10 mr-2 align-middle select-none"><input type="checkbox" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/><label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label></div></div><a href="#" class="text-sm text-orange-600 hover:underline">Change Password</a></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="mt-8 pt-6 border-t border-gray-200 text-center">
+                    <button id="logout-btn" class="font-semibold py-2 px-8 rounded-full shadow-md text-gray-800 border border-gray-300 hover:bg-gray-100 transition-colors">Log Out</button>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="journalModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden"><div class="modal-content rounded-2xl shadow-xl w-full max-w-3xl p-6 sm:p-8 transform transition-all opacity-0 -translate-y-4"></div></div>
+    <div id="moodModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden"><div class="modal-content rounded-2xl shadow-xl w-full max-w-lg p-6 sm:p-8 transform transition-all opacity-0 -translate-y-4"></div></div>
+    <div id="goalsModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden"><div class="modal-content rounded-2xl shadow-xl w-full max-w-lg p-6 sm:p-8 transform transition-all opacity-0 -translate-y-4"></div></div>
+    <div id="myPlaceModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden"><div class="modal-content rounded-2xl shadow-xl w-full max-w-2xl p-6 sm:p-8 transform transition-all opacity-0 -translate-y-4"></div></div>
+
+    <script src="profile.js"></script>
+</body>
+</html>
+
