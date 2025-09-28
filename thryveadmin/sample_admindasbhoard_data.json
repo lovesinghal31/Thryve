@@ -1,0 +1,226 @@
+{
+  "summary": {
+    "period": {
+      "range": "2025-09-01/2025-09-27",
+      "comparisonRange": "2025-08-05/2025-08-31"
+    },
+    "totals": {
+      "totalUsers": 4213,
+      "newUsers": 312,
+      "returningUsers": 1670,
+      "activeUsersDaily": 540,
+      "activeUsersWeekly": 1920,
+      "activeUsersMonthly": 3840,
+      "averageSessionDurationSec": 612,
+      "weeklyRetentionRate": 0.78,
+      "percentageUsersShowingImprovement": 0.64
+    },
+    "flags": {
+      "highRiskFlags": 37,
+      "emergencyEscalations": 5
+    }
+  },
+  "timeseries": {
+    "daily_active_users": {
+      "metric": "daily_active_users",
+      "granularity": "day",
+      "series": [
+        { "date": "2025-09-01", "value": 503 },
+        { "date": "2025-09-02", "value": 517 },
+        { "date": "2025-09-03", "value": 511 },
+        { "date": "2025-09-04", "value": 528 },
+        { "date": "2025-09-05", "value": 534 },
+        { "date": "2025-09-06", "value": 510 },
+        { "date": "2025-09-07", "value": 488 }
+      ]
+    },
+    "engagement_multi": {
+      "granularity": "day",
+      "series": [
+        {
+          "key": "activeUsers",
+            "label": "Active Users",
+            "color": "#6366f1",
+            "points": [
+              { "date": "2025-09-01", "value": 503 },
+              { "date": "2025-09-02", "value": 517 },
+              { "date": "2025-09-03", "value": 511 }
+            ]
+        },
+        {
+          "key": "newUsers",
+          "label": "New Users",
+          "color": "#10b981",
+          "points": [
+            { "date": "2025-09-01", "value": 31 },
+            { "date": "2025-09-02", "value": 28 },
+            { "date": "2025-09-03", "value": 33 }
+          ]
+        },
+        {
+          "key": "returningUsers",
+          "label": "Returning Users",
+          "color": "#f59e0b",
+          "points": [
+            { "date": "2025-09-01", "value": 472 },
+            { "date": "2025-09-02", "value": 489 },
+            { "date": "2025-09-03", "value": 478 }
+          ]
+        }
+      ]
+    }
+  },
+  "distributions": {
+    "riskLevel": {
+      "dimension": "riskLevel",
+      "period": "2025-09",
+      "items": [
+        { "key": "low", "label": "Low", "value": 1860 },
+        { "key": "moderate", "label": "Moderate", "value": 920 },
+        { "key": "high", "label": "High", "value": 340 },
+        { "key": "critical", "label": "Critical", "value": 37 }
+      ],
+      "total": 3157
+    },
+    "counselorLoad": {
+      "dimension": "counselor",
+      "items": [
+        { "key": "c_101", "label": "Dr. Mehra", "activeClients": 32, "openAppointments": 5 },
+        { "key": "c_102", "label": "A. Singh", "activeClients": 29, "openAppointments": 3 },
+        { "key": "c_103", "label": "R. Patel", "activeClients": 27, "openAppointments": 4 }
+      ]
+    }
+  },
+  "appointmentsWeeklyStatus": {
+    "granularity": "week",
+    "categories": ["2025-W31", "2025-W32", "2025-W33", "2025-W34"],
+    "series": [
+      { "key": "scheduled", "label": "Scheduled", "values": [42, 47, 51, 55] },
+      { "key": "completed", "label": "Completed", "values": [35, 38, 40, 44] },
+      { "key": "cancelled", "label": "Cancelled", "values": [6, 5, 7, 4] },
+      { "key": "noShow", "label": "No Show", "values": [3, 2, 4, 3] }
+    ]
+  },
+  "funnel": {
+    "period": "2025-09-01/2025-09-27",
+    "stages": [
+      { "key": "visited", "label": "Visited Platform", "value": 4120 },
+      { "key": "screenStarted", "label": "Screening Started", "value": 1880 },
+      { "key": "screenCompleted", "label": "Screening Completed", "value": 1510 },
+      { "key": "appointmentBooked", "label": "Appointment Booked", "value": 620 },
+      { "key": "attendedSession", "label": "Session Attended", "value": 540 }
+    ],
+    "conversionRate": 0.131
+  },
+  "retention": {
+    "metric": "weeklyRetention",
+    "cohorts": [
+      {
+        "cohort": "2025-W30",
+        "start": "2025-07-21",
+        "size": 210,
+        "weeks": [
+          { "weekOffset": 0, "rate": 1.0 },
+          { "weekOffset": 1, "rate": 0.62 },
+          { "weekOffset": 2, "rate": 0.51 },
+          { "weekOffset": 3, "rate": 0.44 }
+        ]
+      },
+      {
+        "cohort": "2025-W31",
+        "start": "2025-07-28",
+        "size": 198,
+        "weeks": [
+          { "weekOffset": 0, "rate": 1.0 },
+          { "weekOffset": 1, "rate": 0.65 },
+          { "weekOffset": 2, "rate": 0.53 }
+        ]
+      }
+    ]
+  },
+  "screeningTools": {
+    "period": "2025-09",
+    "summary": { "totalScreenings": 2830, "averageCompletionRate": 0.82 },
+    "tools": [
+      {
+        "key": "phq9",
+        "label": "PHQ-9",
+        "count": 920,
+        "avgScore": 7.4,
+        "severityDistribution": [
+          { "range": "0-4", "count": 320 },
+          { "range": "5-9", "count": 290 },
+          { "range": "10-14", "count": 190 },
+          { "range": "15-19", "count": 90 },
+          { "range": "20-27", "count": 30 }
+        ]
+      },
+      { "key": "gad7", "label": "GAD-7", "count": 780, "avgScore": 6.2 },
+      { "key": "who5", "label": "WHO-5", "count": 540, "avgScore": 13.1 }
+    ]
+  },
+  "chatActivity": {
+    "granularity": "hour",
+    "timezone": "UTC",
+    "data": [
+      { "timestamp": "2025-09-01T09:00:00Z", "messages": 42, "uniqueUsers": 18 },
+      { "timestamp": "2025-09-01T10:00:00Z", "messages": 55, "uniqueUsers": 22 },
+      { "timestamp": "2025-09-01T11:00:00Z", "messages": 60, "uniqueUsers": 25 }
+    ],
+    "peakHour": "2025-09-04T15:00:00Z"
+  },
+  "topCounselors": {
+    "metric": "appointmentsCompleted",
+    "period": "2025-09",
+    "items": [
+      { "id": "c_101", "label": "Dr. Mehra", "value": 112, "avgSatisfaction": 4.7 },
+      { "id": "c_102", "label": "A. Singh", "value": 105, "avgSatisfaction": 4.6 },
+      { "id": "c_103", "label": "N. Rao", "value": 98, "avgSatisfaction": 4.5 }
+    ]
+  },
+  "scoreTrendByRisk": {
+    "tool": "phq9",
+    "granularity": "week",
+    "series": [
+      {
+        "riskLevel": "low",
+        "points": [
+          { "week": "2025-W30", "avgScore": 2.1 },
+          { "week": "2025-W31", "avgScore": 2.3 },
+          { "week": "2025-W32", "avgScore": 2.2 }
+        ]
+      },
+      {
+        "riskLevel": "moderate",
+        "points": [
+          { "week": "2025-W30", "avgScore": 8.4 },
+          { "week": "2025-W31", "avgScore": 8.2 },
+          { "week": "2025-W32", "avgScore": 8.1 }
+        ]
+      },
+      {
+        "riskLevel": "high",
+        "points": [
+          { "week": "2025-W30", "avgScore": 15.1 },
+          { "week": "2025-W31", "avgScore": 14.9 },
+          { "week": "2025-W32", "avgScore": 14.7 }
+        ]
+      }
+    ]
+  },
+  "aggregateExample": {
+    "dateRange": { "from": "2025-09-01", "to": "2025-09-27" },
+    "summaryRef": "#/summary",
+    "engagementTimeseriesRef": "#/timeseries/engagement_multi",
+    "riskDistributionRef": "#/distributions/riskLevel",
+    "appointmentsWeeklyStatusRef": "#/appointmentsWeeklyStatus",
+    "funnelRef": "#/funnel",
+    "retentionRef": "#/retention",
+    "topCounselorsRef": "#/topCounselors"
+  },
+  "_meta": {
+    "generatedAt": "2025-09-27T12:00:00Z",
+    "notes": "Sample dataset for frontend chart wiring; values are synthetic.",
+    "version": 1
+  }
+}

@@ -20,6 +20,7 @@ app.use(cookieParser());
 import userRoutes from "./routes/user.routes.js";
 import instituteRoutes from "./routes/institue.routes.js";
 import adminDashboardRoutes from "./routes/adminDashboard.routes.js";
+import adminAnalyticsRoutes from "./routes/adminAnalytics.routes.js";
 import screeningRoutes from "./routes/screening.routes.js";
 import appointmentRoutes from "./routes/appointment.routes.js";
 import resourceRoutes from "./routes/resource.routes.js";
@@ -30,6 +31,7 @@ import notificationRoutes from "./routes/notification.routes.js";
 app.use("/api/v1/users",userRoutes)
 app.use("/api/v1/institutes", instituteRoutes);
 app.use("/api/v1/admin-dashboard", adminDashboardRoutes);
+app.use("/api/v1/admin/analytics", adminAnalyticsRoutes);
 app.use("/api/v1/screenings", screeningRoutes);
 app.use("/api/v1/appointments", appointmentRoutes);
 app.use("/api/v1/resources", resourceRoutes);

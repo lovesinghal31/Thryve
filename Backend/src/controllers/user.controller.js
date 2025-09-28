@@ -362,6 +362,7 @@ const revokeAllSessions = asyncHandler(async (req, res) => {
   if (!user) throw new ApiError(404, "User not found");
   user.refreshToken = null;
   await user.save({ validateBeforeSave: false });
+  console.log("🧹 All sessions revoked for user", id);
   return res.status(200).json(new ApiResponse(200, {}, "All sessions revoked"));
 });
 

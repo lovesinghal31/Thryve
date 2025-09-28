@@ -19,6 +19,12 @@ chat.md
 # seed folder
 seed/
 
+# admin analysis md file
+admin_analysis.md
+API_Spec.md
+ADMIN_Analytics_Endpoints.md
+admin_dashboard_fields.txt
+
 # git commands
 GitCommand.md
 
